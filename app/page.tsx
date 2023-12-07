@@ -1,6 +1,9 @@
 "use client";
 import { FormEvent, useState } from "react";
 import Input from "@/components/Input";
+import Current from "@/components/Current";
+import WeekForecast from "@/components/WeekForecast";
+import WeatherDetails from "@/components/WeatherDetails";
 
 export default function Home() {
   const [data, setData] = useState({});
@@ -29,26 +32,47 @@ export default function Home() {
   };
 
   let content;
+
   if (Object.keys(data).length === 0 && error === "") {
     content = (
-      <div className="text-white text-center">
-        <h2>hola</h2>
+      <div className="text-white text-center h-screen mt-[5rem]">
+        <h2 className="text-3xl font-semibold mb-4">
+          Welcome to the WeatherApp
+        </h2>
+        <p className="text-xl">Enter a city name</p>
       </div>
+    );
+  } else if (error != "") {
+    content = (
+      <div className="text-white text-center h-screen mt-[5rem]">
+        <p className="text-3xl font-semibold mb-4">City Not Found</p>
+        <p className="text-xl">Enter a Valid City</p>
+      </div>
+    );
+  } else {
+    content = (
+      <>
+        <div className="flex flex-col md:flex-row p-12 items-center justify-between">
+          <Current data={data} />
+          <WeekForecast data={data} />
+        </div>
+        <div>
+          <WeatherDetails data={data} />
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="bg-cover bg-gradient-to-r from-blue-500 to-blue-300 h-screen">
-      <div className="bg-white/25 w-full flex flex-col h-fit">
+    <div className="bg-cover bg-gradient-to-r from-blue-500 to-blue-300">
+      <div className="bg-white/25 w-full flex flex-col md:h-screen sm:h-fit">
         <div className="flex flex-col md:flex-row justify-between items-center p-12">
           <Input handleSearch={handleSearch} setLocation={setLocation} />
-          <h1 className="mb-8 md:0 order-1 text-white py-2 px-4 rounded-xl italic font-bold">
+          <h1 className="mb-8 md:mb-0 order-1 text-white py-2 px-4 rounded-xl font-bold">
             Weather App
           </h1>
         </div>
-        {data.current ? (
-          <div>{data.current.temp_f}</div>
-        ): null }
+        {content}
       </div>
     </div>
   );
