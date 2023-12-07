@@ -43,8 +43,8 @@ const WeekForecast = ({ data }: WeekForecastProps) => {
             width={50}
           />
           <div>
-            <p>H {item.day.maxtemp_c.toFixed()}</p>
-            <p>L {item.day.mintemp_c.toFixed()}</p>
+            <p>H {item.day.maxtemp_c.toFixed()}°</p>
+            <p>L {item.day.mintemp_c.toFixed()}°</p>
           </div>
         </div>
       ))}
