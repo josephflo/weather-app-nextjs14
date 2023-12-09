@@ -4,7 +4,7 @@ import './globals.css'
 
 
 export const metadata: Metadata = {
-  title: 'WeatherApp',
+  title: 'WeathNowApp',
   description: 'Your favorite Weather App',
 }
 const poppins = Poppins({
