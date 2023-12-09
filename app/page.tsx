@@ -69,7 +69,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row justify-between items-center p-12">
           <Input handleSearch={handleSearch} setLocation={setLocation} />
           <h1 className="mb-8 md:mb-0 order-1 text-white py-2 px-4 rounded-xl font-bold">
-            Weather App
+            Weath Now App
           </h1>
         </div>
         {content}

@@ -23,6 +23,8 @@ const Current = ({ data }: CurrentProps) => {
     ? "https:" + data.current.condition.icon
     : null;
   const currentDate = getCurrentDate();
+
+  
   return (
     <div className="flex flex-col mb-8 md:mb-0 items-start gap-2 w-1/2">
       <div className="flex items-center">
@@ -47,6 +49,7 @@ const Current = ({ data }: CurrentProps) => {
           <p className="text-5xl text-white">
             {data.current.temp_c.toFixed()}
             <span>°</span>
+            <span></span>
           </p>
         ) : null}
         {data.current ? (
